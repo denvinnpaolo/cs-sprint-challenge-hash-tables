@@ -11,20 +11,16 @@ def reconstruct_trip(tickets, length):
     """
     # Your code here
     my_dict = {}
-    for i in range(length - 1):
+    for i in range(length):
         my_dict[tickets[i].source] = tickets[i].destination
 
-    route = [my_dict['NONE']]
+    route = [None] * length
 
-
-    print(route)
-    print(my_dict)
-    for i in range(length):
-        print(i)
-        if route[i] in my_dict:
-            route[i+1] = my_dict[route[i]]
-
-    # print(route)
+    route[0] = my_dict["NONE"]
+    for i in range(1, length):
+        cur_des = route[i-1]
+        if my_dict[cur_des]:
+            route[i] = my_dict[cur_des]
 
     return route
 
