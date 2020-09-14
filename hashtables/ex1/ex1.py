@@ -4,20 +4,17 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     # Your code here
     if length <= 1 : return None
-    if length == 2 : return [1, 0]
 
     cache = {}
-    for i in range(length-1):
+    for i in range(length):
         cache[weights[i]] = i
 
-    for i in range(length-1):
+    for i in range(length):
         weight_needed = limit - weights[i]        
 
         if weight_needed in cache:
-            print([i,cache[weight_needed]])
             return [cache[weight_needed], i]
         else:
             continue
 
 
-get_indices_of_item_weights([10,20,15,5], 4, 30)
